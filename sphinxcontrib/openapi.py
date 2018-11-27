@@ -335,6 +335,11 @@ def _httpresource_v3(endpoint, method, properties):
         if int(status) in (200, 201):
             response_content = response.get('content', {})
             for content_type, content in response_content.items():
+                
+                
+                print ("\n\n\nCHECKING THE CONTENT", status, content_type, content)
+                print ("\n\n\n\n")
+                
                 if content_type == 'application/json' and 'schema' in content:
                     yield ''
                     for line in convert_json_schema(content['schema'], directive=':>json'):
